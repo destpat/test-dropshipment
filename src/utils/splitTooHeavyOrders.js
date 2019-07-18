@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 /**
  * Découpe les commande trop lourde, plus de 30 kilos,
  * en générant de nouvelles commande.
@@ -13,7 +12,7 @@ const splitTooHeavyOrders = orders => {
     while (cloneItems.length > 0) {
       let weight = 0;
       let i = 0;
-      const filtered = [];
+      // const filtered = [];
       const itemsToAddInParcel = [];
       const indexToRemove = [];
       while (i < cloneItems.length) {
@@ -27,9 +26,7 @@ const splitTooHeavyOrders = orders => {
         }
         i += 1;
       }
-      console.log(itemsToAddInParcel);
       // cloneItems.splice(1, 1);
-      console.log(cloneItems);
       itemsToAddInParcel.forEach(itemToAddInParcel => {
         const index = cloneItems
           .map(cloneItem => cloneItem.weight)
@@ -37,7 +34,6 @@ const splitTooHeavyOrders = orders => {
         if (index > -1) {
           cloneItems.splice(index, 1);
         }
-        console.log(cloneItems);
       });
     }
   });
