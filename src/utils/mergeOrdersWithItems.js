@@ -11,7 +11,8 @@ const mergeOrdersWithItems = (orders, items) => {
       const currentItem = items.find(item => item.id === orderItem.item_id);
       return {
         ...orderItem,
-        weight: currentItem.weight
+        weight: currentItem.weight * 1,
+        dispatched: false
       };
     });
     return {
