@@ -22,7 +22,7 @@ const splitTooHeavyOrders = orders => {
           }
         });
 
-        parcels.push(itemToAddInParcel);
+        parcels.push({ ...order, items: itemToAddInParcel });
       }
     });
   });
