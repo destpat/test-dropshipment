@@ -15,7 +15,6 @@ const mergeOrdersWithItems = (orders, items) => {
         dispatched: false
       };
     });
-
     return {
       ...order,
       items: updatedItems
