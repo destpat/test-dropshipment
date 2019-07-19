@@ -32,7 +32,7 @@ const Parcels = () => {
     <div>
       <ul>
         {parcels.map(parcel => (
-          <li key={parcel.tracking_id}>{parcel.tracking_id}</li>
+          <li key={parcel.tracking_id}></li>
         ))}
       </ul>
     </div>

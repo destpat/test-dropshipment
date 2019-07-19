@@ -8,20 +8,19 @@
 const splitTooHeavyOrders = orders => {
   const parcels = [];
   orders.forEach(order => {
+    order.items = order.items.sort((a, b) => (a.weight < b.weight ? 1 : -1));
     order.items.forEach(currentItem => {
       if (currentItem.dispatched === false) {
         let { weight } = currentItem;
         const itemToAddInParcel = [currentItem];
         currentItem.dispatched = true;
-
         order.items.forEach((item, index) => {
-          if (item.dispatched === false && weight + item.weight < 30) {
+          if (item.dispatched === false && weight + item.weight <= 30) {
             weight += item.weight;
             itemToAddInParcel.push(item);
             order.items[index].dispatched = true;
           }
         });
-
         parcels.push({
           order_id: order.id,
           items: itemToAddInParcel,
