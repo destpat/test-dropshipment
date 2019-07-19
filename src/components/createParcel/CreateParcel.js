@@ -5,6 +5,7 @@ import mergeOrdersWithItems from '../../utils/mergeOrdersWithItems';
 import splitTooHeavyOrders from '../../utils/splitTooHeavyOrders';
 import generatePaletteNumbers from '../../utils/generatePaletteNumbers';
 import generateTrackingNumbers from '../../utils/generateTrackingNumbers';
+import getOperationRemuneration from '../../utils/getOperationRemuneration';
 
 import { orders } from '../../mock/orders.json';
 import { items } from '../../mock/items.json';
@@ -16,9 +17,16 @@ const Parcels = () => {
     const ordersWithItems = mergeOrdersWithItems(orders, items);
     const splittedOrders = splitTooHeavyOrders(ordersWithItems);
     const parcelsWithPaletteNumber = generatePaletteNumbers(splittedOrders);
-    generateTrackingNumbers(parcelsWithPaletteNumber).then(response =>
-      setParcels(response)
+    const operationRemuneration = getOperationRemuneration(
+      parcelsWithPaletteNumber
     );
+    console.log(
+      `Rémunération totale de l'opération ${operationRemuneration} €`
+    );
+    generateTrackingNumbers(parcelsWithPaletteNumber).then(response => {
+      setParcels(response);
+      console.log('Parcels', response);
+    });
   }, []);
   return (
     <div>

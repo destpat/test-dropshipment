@@ -7,7 +7,7 @@
  */
 const mergeOrdersWithItems = (orders, items) => {
   const parcel = orders.map(order => {
-    const updatedItem = order.items.map(orderItem => {
+    const updatedItems = order.items.map(orderItem => {
       const currentItem = items.find(item => item.id === orderItem.item_id);
       return {
         ...orderItem,
@@ -15,9 +15,10 @@ const mergeOrdersWithItems = (orders, items) => {
         dispatched: false
       };
     });
+
     return {
       ...order,
-      items: updatedItem
+      items: updatedItems
     };
   });
   return parcel;

@@ -22,7 +22,11 @@ const splitTooHeavyOrders = orders => {
           }
         });
 
-        parcels.push({ ...order, items: itemToAddInParcel });
+        parcels.push({
+          order_id: order.id,
+          items: itemToAddInParcel,
+          weight
+        });
       }
     });
   });
