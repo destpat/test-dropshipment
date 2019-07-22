@@ -5,14 +5,10 @@
  * @param  {[Object[]]} parcels [description]
  * @return {[Object[]]}         Colis avec numéros de palette
  */
-const generatePaletteNumbers = parcels => {
-  let currentPaletteNumber = 0;
-  return parcels.map((parcel, index) => {
-    if (index % 15 === 0) {
-      currentPaletteNumber++;
-    }
-    return { ...parcel, palette_number: currentPaletteNumber };
-  });
-};
+const generatePaletteNumbers = parcels =>
+  parcels.map((parcel, index) => ({
+    ...parcel,
+    palette_number: Math.floor(index / 15)
+  }));
 
 export default generatePaletteNumbers;
