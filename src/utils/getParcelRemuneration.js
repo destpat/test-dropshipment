@@ -4,22 +4,18 @@
  * @return {Number}        Rémunération sur le colis
  */
 const getParcelRemuneration = weight => {
-  if (weight >= 0 && weight < 1) {
-    return 1;
+  switch (true) {
+    case weight < 1:
+      return 1;
+    case weight < 5:
+      return 2;
+    case weight < 10:
+      return 3;
+    case weight < 20:
+      return 5;
+    default:
+      return 10;
   }
-  if (weight >= 1 && weight < 5) {
-    return 2;
-  }
-  if (weight >= 5 && weight < 10) {
-    return 3;
-  }
-  if (weight >= 5 && weight < 10) {
-    return 5;
-  }
-  if (weight >= 10 && weight < 20) {
-    return 10;
-  }
-  return 20;
 };
 
 export default getParcelRemuneration;

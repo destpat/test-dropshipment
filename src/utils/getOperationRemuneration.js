@@ -5,12 +5,10 @@ import getParcelRemuneration from './getParcelRemuneration';
  * @param  {Object[]} parcels Liste de colis
  * @return {Number}         Rémunération de l'opération
  */
-const getOperationRemuneration = parcels => {
-  let remuneration = 0;
-  parcels.forEach(parcel => {
-    remuneration += getParcelRemuneration(parcel.weight);
-  });
-  return remuneration;
-};
+const getOperationRemuneration = parcels =>
+  parcels.reduce(
+    (prev, parcel) => prev + getParcelRemuneration(parcel.weight),
+    0
+  );
 
 export default getOperationRemuneration;
